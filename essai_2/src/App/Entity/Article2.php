@@ -6,8 +6,13 @@ class Article
 {
 //attribut toujours declaré en private
 
+//variable de class
+
+public static $remise;
+
 //propriété ou attributs des futur article
 //en dessous de la documentation voir phpdoc
+
 /**
  * @var string $reference référence du produit
  */
@@ -150,15 +155,20 @@ private $price;
     //mauvaise façon de faire le  nom de la methodse n'est pas clair
     //on a un effet de bord (effet secondaire)
     private function generateReference(){
+    //recup la premiere lettre de chaque mots en majuscule
+    //et génère la reference
         $words = explode(' ',$this->tradeName);
         $letters='';
         foreach ($words as $word) {
             $letters .=strtoupper(substr($word,0,1));
         }
-        $this->reference = $letters;
+        // donc a cause de la methode
+        //ci-dessous on comment $this->reference = $letters; et on remplace par
+        return $letters;
     }
     //
     public function autoAssignementReference(){
+        //recupère les resultat de generateReference
         $this->reference = $this->generateReference();
     }
 
