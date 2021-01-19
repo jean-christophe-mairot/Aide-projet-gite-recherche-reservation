@@ -1,4 +1,5 @@
 <?php
+namespace App\Banque;
 // quand les attributs sont en private on fait des getter setter
 // self c la classe 
 // $this c l instance de la classe

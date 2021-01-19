@@ -1,19 +1,20 @@
-<?php 
-require_once 'class/Compte.php';
-require_once 'class/CompteCourant.php';
-require_once 'class/CompteEpargne.php';
+<?php
 
-$compte1= new CompteCourant('benoit', 500, 200);
-$compte1->retirer(200);
+use App\Autoloader;
+use App\Client\Compte as compteClient;
+//use App\Banque\CompteCourant;
+//use App\Banque\CompteEpargne;
+//utilisation des name space pour deux fichiers class du même namespace
+use App\Banque\{CompteEpargne,CompteCourant};
+
+require_once 'class/Autoloader.php';
+Autoloader::register();
+
+
+$compte2= new CompteClient();
 
 echo'<pre>';
-var_dump($compte1);
+var_dump($compte2);
 echo'</pre>';
 
-$compteEpargne= new CompteEpargne('benoit',200,10);
-$compteEpargne->verserInterets();
-$compteEpargne->retirer(200);
 
-echo'<pre>';
-var_dump($compteEpargne);
-echo'</pre>';

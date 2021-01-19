@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Banque;
 /**
  * CompteCourant : compte bancaire qui hérite de la class Compte
  * on dit qu'elle etend Compte

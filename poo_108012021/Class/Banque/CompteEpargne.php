@@ -1,6 +1,6 @@
 <?php
 
-
+namespace App\Banque;
 /**
  * extends compte avec taux d'interêts
  */
