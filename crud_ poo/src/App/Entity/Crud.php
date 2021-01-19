@@ -28,7 +28,7 @@ if ($this->pdo === null){
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $this->pdo = $pdo;
     }
-    return $pdo;
+    return $this->$pdo;
 }    
 
 public function query($statement){
