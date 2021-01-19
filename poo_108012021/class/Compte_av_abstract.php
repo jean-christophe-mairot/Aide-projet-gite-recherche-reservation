@@ -5,11 +5,9 @@
 // :void -> retoune rien, vide
 
 /**
- * on ne peut instancier une classe abstraite
- * abstract = pour les classes parent
  * class Compte bancaire
  */
-abstract class Compte
+class Compte
 {    
     /**
      * titulaire
@@ -20,11 +18,13 @@ abstract class Compte
 
     /**
      * solde
-     *passe de private à protected pour y avoir accés de la classe enfant
+     *
      * @var float $solde solde du compte 
      */
-    protected float $solde;
+    private float $solde;
     
+    //constante pour y accéder on passe par la classe
+    const TAUX_INTERETS = 5/100 ;
 
     /**
      * Method __construct
@@ -41,7 +41,10 @@ abstract class Compte
         // on attribut le nom à la propriété titulaire de l'instance créée 
         $this->titulaire = $titulaire;
         // self le nom de la classe
-        $this->solde = $solde;
+        $this->solde = $solde + ($solde * self::TAUX_INTERETS);
+        //pour afficher si le titulaire est à decouvert lors de la création de l'instance
+        echo $this->decouvert();
+
     }
     
     /**
@@ -137,7 +140,24 @@ abstract class Compte
         }else{
             echo "Montant invalide ou solde insuffisant";
         }
+        // 
+        echo $this->decouvert();
     }
+    
+    /**
+     * decouvert check si le titualire est à decouvert
+     * 
+     * @return void
+     */
+    private function decouvert()
+    {
+        if($this->solde<0){
+            return "Vous êtes à decouvert";
+        }else{
+            return "vous n'êtes pas à decouvert";
+        }
+    }
+
     
     /**
      * __toString :
