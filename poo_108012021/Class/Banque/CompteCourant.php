@@ -1,5 +1,8 @@
 <?php
 namespace App\Banque;
+
+use App\Client\Compte as ClientCompte;
+
 /**
  * CompteCourant : compte bancaire qui hérite de la class Compte
  * on dit qu'elle etend Compte
@@ -21,16 +24,16 @@ class CompteCourant extends Compte
      * __construct : 
      * on reprend de la class parent le titulaire et le solde
      *
-     * @param  string $titulaire
+     * @param  ClientCompte $compte dépendance de client/compte
      * @param  float $solde
      * @param  int $decouvert
      * @return void
      */
-    public function __construct(string $titulaire,float $solde, int $decouvert)
+    public function __construct(ClientCompte $compte,float $solde, int $decouvert)
     {
         //on transfert les info nécessaire au constructeur
         //donc on appel la class parent
-        parent::__construct($titulaire,$solde);
+        parent::__construct($compte,$solde);
         $this->decouvert = $decouvert; 
     }
 

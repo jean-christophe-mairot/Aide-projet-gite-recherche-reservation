@@ -1,5 +1,8 @@
 <?php
 namespace App\Banque;
+
+use App\Client\Compte as ClientCompte;
+
 // quand les attributs sont en private on fait des getter setter
 // self c la classe 
 // $this c l instance de la classe
@@ -15,32 +18,33 @@ abstract class Compte
     /**
      * titulaire
      *
-     * @var string $titulaire user du compte
+     * @var ClientCompte $titulaire user du compte
      */
-    private string $titulaire;    
+    private $titulaire;
 
     /**
      * solde
      *passe de private à protected pour y avoir accés de la classe enfant
      * @var float $solde solde du compte 
      */
-    protected float $solde;
+    protected $solde;
     
 
     /**
      * Method __construct
      * si le solde n'est pas renseigner on lui donne 100 euro (float $solde =100)
      * valeur par defaut passer dans le construct
-     * @param string $titulaire
+     * @param ClientCompte $compte compte du titulaire
      * @param float $solde
      * @return void 
      */
 
-
-    public function __construct(string $titulaire,float $solde =100)
+    //injection de dépendance: on lie le compte dans le dossier client
+    //à la class parent  
+    public function __construct(ClientCompte $compte,float $solde =100)
     {
         // on attribut le nom à la propriété titulaire de l'instance créée 
-        $this->titulaire = $titulaire;
+        $this->titulaire = $compte;
         // self le nom de la classe
         $this->solde = $solde;
     }
@@ -74,24 +78,24 @@ abstract class Compte
     /**
      * Get $titulaire user du compte
      *
-     * @return  string
+     * @return  ClientCompte
      */ 
-    public function getTitulaire(): string
+    public function getTitulaire():ClientCompte
     {
         return $this->titulaire;
     }
 
     /**
-     * Set $titulaire user du compte
+     * Set $compte user du compte
      * pour changer le nom d'un titulaire
-     * @param  string  $titulaire  $titulaire user du compte
+     * @param  ClientCompte  $compte  compte du client
      *
-     * @return  self
+     * @return  compte compte bancaire
      */ 
-    public function setTitulaire(string $titulaire): self
+    public function setTitulaire(ClientCompte $compte): self
     {
-        if($titulaire != ""){
-            $this->titulaire = $titulaire;
+        if(isset($compte)){
+            $this->titulaire = $compte;
         }
         return $this;
     }
