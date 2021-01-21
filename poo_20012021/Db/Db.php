@@ -18,13 +18,14 @@ class Db extends PDO
     private const DBHOST = 'localhost';
     private const DBUSER = 'root';
     private const DBPASS = '';
-    private const DBNAME = 'game_board_taverne';
+    private const DBNAME = 'gb_taverne';
 
     //pour le singleton le construct est en private
     private function __construct()
     {
         //DSN de connexion
-        $_dsn = 'mysql:bdname='.self::DBNAME. ';host='. self::DBHOST;
+        $_dsn = 'mysql:dbname='.self::DBNAME. ';host='. self::DBHOST;
+        
 
         //On appelle le constructeur
         try {
