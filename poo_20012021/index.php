@@ -33,6 +33,7 @@ $model->update(2, $annonce);
 echo'<pre>';
 var_dump($annonce);
 echo'</pre>';
+
 // phpinfo();
 
 
