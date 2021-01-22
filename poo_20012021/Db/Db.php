@@ -18,7 +18,7 @@ class Db extends PDO
     private const DBHOST = 'localhost';
     private const DBUSER = 'root';
     private const DBPASS = '';
-    private const DBNAME = 'gb_taverne';
+    private const DBNAME = 'bg_taverne';
 
     //pour le singleton le construct est en private
     private function __construct()
