@@ -36,4 +36,4 @@ echo'</pre>';
 
 // phpinfo();
 
-
+echo 'salut toto';
