@@ -89,7 +89,7 @@ class Model extends Db
             //on transforme le tableau champs en une chaine de caractères
             $liste_champs= implode(', ', $champs);
             $liste_intero = implode(', ', $intero);
-            var_dump($liste_intero);
+            
             // on execute la requête
             return $this->request('INSERT INTO '.$this->table.'('. $liste_champs. ')VALUES('.$liste_intero.')',$valeurs);
             
@@ -116,28 +116,27 @@ class Model extends Db
     
     // *************************************************** DEBUT UPDATE  ******************************************
 
-    public function update()
+    public function update($id_annonce)
         {
             $champs =[];
-            $intero=[];
             $valeurs =[];
             //  on boucle pour éclater le tableau
             foreach($this as $champ => $valeur){
                 // UPDATE annonces SET titre = ?, description = ?,......
-                    if($valeur !== null && $champ !== 'db' && $champ !== 'table'){
+                    if($valeur !== null && $champ != 'db' && $champ != 'table'){
                         // crée des line du type titre = ?
                         $champs[] = "$champ = ?";
                         $valeurs[] = $valeur;  
                     }
                 
                 }
-                $valeur[]= $this->id_annonce;
+                $valeurs[]= $id_annonce;
                 //on transforme le tableau champs en une chaine de caractères
                 $liste_champs= implode(', ', $champs);
-                
+               
                 
                 // on execute la requêted
-                return $this->request('UPDATE '.$this->table.' SET '. $liste_champs. ' WHERE id= ?', $valeurs);
+                return $this->request('UPDATE '.$this->table.' SET '. $liste_champs. ' WHERE id_annonce = ?', $valeurs);
                 
             
         }
@@ -146,6 +145,13 @@ class Model extends Db
 
     // ****************************************************  FIN UPDATE *******************************************
 
+    // ****************************************************  DELETE ***********************************************
+        public function delete(int $id_annonce)
+        {
+            return $this->request("DELETE FROM {$this->table} WHERE id_annonce = ?", [$id_annonce]);
+        }
+
+    // *************************************************** FIN DE DELETE ******************************************
     // ************************************************************************************************************
     /**
      * Method request

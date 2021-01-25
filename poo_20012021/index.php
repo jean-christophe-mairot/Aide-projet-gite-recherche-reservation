@@ -12,29 +12,27 @@ Autoloader::register();
 $model = new AnnoncesModel;
 
 $donnees = [
-    'titre' => 'new',
-    'description' => 'new',
-    'j2'=>0
+    'titre' => 'change2',
+    'description' => 'change',
+    'j2'=>1,
+    'prix'=>10,
+    'j15'=>1
+
 ];
 $annonce = $model->hydrate($donnees);
 
-
+// $model->create($annonce);
+// $model->update(1, $annonce);
+$model->delete(4);
+// echo'<pre>';
+// var_dump($annonce);
+// echo'</pre>';
 
 // $annonces = $model->findBy(['j2' => 0]);
 // $annonce = $model
 //     ->setTitre('nouvelle annonce')
 //     ->setDescription('nouvelle description')
 //     ->setPrix(15);
-
-//     //on veut pouvoir faire $model->create($annonce);
-// $model->create($annonce);
-$model->update(2, $annonce);
-
-echo'<pre>';
-var_dump($annonce);
-echo'</pre>';
-
-// phpinfo();
 
 echo 'salut toto';
 
