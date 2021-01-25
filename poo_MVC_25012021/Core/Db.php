@@ -1,5 +1,5 @@
 <?php
-namespace App\Db;
+namespace App\Core;
 /**
  * class basé sur le paterne singlton
  * singleton = une seule instance 
